@@ -26,21 +26,3 @@ class TapSQLAlchemy(Tap):
     config_jsonschema = th.PropertiesList(
         th.Property("database_url", th.StringType, required=True),
     ).to_dict()
-
-    # These two will be removed when this comment is resolved in the SDK:
-    #    https://gitlab.com/meltano/sdk/-/merge_requests/44#note_676486579
-
-    @property
-    def catalog_dict(self) -> dict:
-        if self.input_catalog:
-            return self.input_catalog
-
-        return SQLAlchemyStream.run_discovery(self.config)
-
-    def discover_streams(self) -> List[SQLAlchemyStream]:
-        """Return a list of discovered streams."""
-        result: List[SQLAlchemyStream] = []
-        for catalog_entry in self.catalog_dict["streams"]:
-            result.append(SQLAlchemyStream(self, catalog_entry))
-
-        return result
