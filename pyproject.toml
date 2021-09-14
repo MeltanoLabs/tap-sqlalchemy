@@ -1,14 +1,12 @@
 [tool.poetry]
-name = "tap-athena"
+name = "tap-sqlalchemy"
 version = "0.0.1"
-description = "`tap-athena` is a Singer tap for Athena, built with the Meltano SDK for Singer Taps."
+description = "`tap-sqlalchemy` is a Singer tap for SQLAlchemy, built with the Meltano SDK for Singer Taps."
 authors = ["AJ Steers"]
 license = "Apache 2.0"
 
 [tool.poetry.dependencies]
 python = "<3.10,>=3.6.1"
-requests = "^2.25.1"
-pyathena = "^2.3.0"
 
 # Uncomment just one of the following sdk declarations.
 # Note the prerelease SQLStream support is tracked here: https://gitlab.com/meltano/sdk/-/merge_requests/44
@@ -28,4 +26,4 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 # CLI declaration
-tap-athena = 'tap_athena.tap:TapAthena.cli'
+tap-sqlalchemy = 'tap_sqlalchemy.tap:TapSQLAlchemy.cli'

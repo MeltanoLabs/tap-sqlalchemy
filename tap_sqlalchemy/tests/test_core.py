@@ -5,7 +5,7 @@ from typing import Any, Dict
 
 from singer_sdk.testing import get_standard_tap_tests
 
-from tap_athena.tap import TapAthena
+from tap_sqlalchemy.tap import TapSQLAlchemy
 
 SAMPLE_CONFIG: Dict[str, Any] = {
     # Tap config for tests are loaded from env vars (see `.env.template`)
@@ -17,7 +17,7 @@ SAMPLE_CONFIG: Dict[str, Any] = {
 def test_standard_tap_tests():
     """Run standard tap tests from the SDK."""
     tests = get_standard_tap_tests(
-        TapAthena,
+        TapSQLAlchemy,
         config=SAMPLE_CONFIG
     )
     for test in tests:

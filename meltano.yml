@@ -1,13 +1,13 @@
 version: 1
 send_anonymous_usage_stats: true
-project_id: tap-athena
+project_id: tap-sqlalchemy
 plugins:
   extractors:
-  - name: tap-athena
-    namespace: tap_athena
+  - name: tap-sqlalchemy
+    namespace: tap_sqlalchemy
     # TODO: To test using Meltano, replace with absolute path
-    #       to the tap-athena.sh script:
-    executable: ./tap-athena.sh
+    #       to the tap-sqlalchemy.sh script:
+    executable: ./tap-sqlalchemy.sh
     capabilities:
     - state
     - catalog
@@ -15,16 +15,8 @@ plugins:
     # config:
     #   start_date: '2010-01-01T00:00:00Z'
     settings:
-    - name: aws_access_key_id
+    - name: database_url
       kind: password
-    - name: aws_secret_access_key
-      kind: password
-    - name: aws_region
-      kind: string
-    - name: s3_staging_dir
-      kind: string
-    - name: schema_name
-      kind: string
   loaders:
   - name: target-jsonl
     variant: andyh1203
